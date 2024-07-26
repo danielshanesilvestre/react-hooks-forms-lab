@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import ItemForm from "./ItemForm";
 import Filter from "./Filter";
 import Item from "./Item";
 
-function ShoppingList({ items }) {
+function ShoppingList({ children, items }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [search, setSearch] = useState("");
 
@@ -24,7 +23,7 @@ function ShoppingList({ items }) {
 
   return (
     <div className="ShoppingList">
-      <ItemForm />
+      {children}
       <Filter onSearchChange={handleSearchChange} onCategoryChange={handleCategoryChange} search={search}/>
       <ul className="Items">
         {itemsToDisplay.map((item) => (
